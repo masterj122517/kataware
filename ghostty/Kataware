@@ -1,0 +1,25 @@
+# Kataware — a comet-lit indigo night.
+# Base ladder stays quiet; spectral accents carry focus and meaning.
+palette = 0=#0B1020
+palette = 1=#F2778B
+palette = 2=#82D2B2
+palette = 3=#F2C38B
+palette = 4=#6CA8FF
+palette = 5=#9B8CFF
+palette = 6=#60D7E8
+palette = 7=#A8B7D0
+palette = 8=#6B7FA2
+palette = 9=#FF91A4
+palette = 10=#A0E0C2
+palette = 11=#FFD49F
+palette = 12=#91BAFF
+palette = 13=#B9ACFF
+palette = 14=#86E9F2
+palette = 15=#EEF3FF
+
+background = #0B1020
+foreground = #D9E2F2
+cursor-color = #9B8CFF
+cursor-text = #0B1020
+selection-background = #2B3B62
+selection-foreground = #EEF3FF
