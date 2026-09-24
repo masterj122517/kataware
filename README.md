@@ -45,7 +45,7 @@ vim.g.kataware_transparent = not vim.g.kataware_transparent
 vim.cmd.colorscheme 'kataware'
 ```
 
-Transparent mode clears the editor canvas, sign and fold columns, window bars, and tabline fill. Floating windows, completion menus, selections, diagnostics, and statuslines keep their backgrounds for contrast and readability.
+Transparent mode clears the editor canvas, generic floating windows, Telescope, completion menus, WhichKey, sign and fold columns, window bars, and tabline fill. Selected rows, semantic highlights, diagnostics, and statuslines keep their backgrounds for contrast and readability.
 
 For a manual installation, copy `colors/kataware.lua` to `~/.config/nvim/colors/kataware.lua`.
 

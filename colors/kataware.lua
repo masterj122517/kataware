@@ -27,15 +27,19 @@ local p = {
 }
 
 -- Set this global before loading the colorscheme; opaque is the default.
-local editor_bg = vim.g.kataware_transparent == true and 'NONE' or p.void
+local transparent = vim.g.kataware_transparent == true
+local editor_bg = transparent and 'NONE' or p.void
+local surface_bg = transparent and 'NONE' or p.surface
+local surface_high_bg = transparent and 'NONE' or p.surface_high
+local night_bg = transparent and 'NONE' or p.night
 
 local groups = {
   -- Editor surfaces
   Normal = { fg = p.fg, bg = editor_bg },
   NormalNC = { fg = p.dim, bg = editor_bg },
-  NormalFloat = { fg = p.fg, bg = p.surface },
-  FloatBorder = { fg = p.border, bg = p.surface },
-  FloatTitle = { fg = p.comet, bg = p.surface, bold = true },
+  NormalFloat = { fg = p.fg, bg = surface_bg },
+  FloatBorder = { fg = p.border, bg = surface_bg },
+  FloatTitle = { fg = p.comet, bg = surface_bg, bold = true },
   ColorColumn = { bg = p.night },
   Cursor = { fg = p.void, bg = p.starlight },
   CursorColumn = { bg = p.night },
@@ -75,9 +79,9 @@ local groups = {
   TabLineSel = { fg = p.void, bg = p.comet, bold = true },
   WinBar = { fg = p.dim, bg = editor_bg },
   WinBarNC = { fg = p.muted, bg = editor_bg },
-  Pmenu = { fg = p.dim, bg = p.surface },
+  Pmenu = { fg = p.dim, bg = surface_bg },
   PmenuSel = { fg = p.starlight, bg = p.surface_high, bold = true },
-  PmenuSbar = { bg = p.night },
+  PmenuSbar = { bg = night_bg },
   PmenuThumb = { bg = p.border },
   PmenuMatch = { fg = p.comet, bold = true },
   PmenuMatchSel = { fg = p.comet, bg = p.surface_high, bold = true },
@@ -132,6 +136,27 @@ local groups = {
   GitSignsAdd = { fg = p.green },
   GitSignsChange = { fg = p.blue },
   GitSignsDelete = { fg = p.red },
+  CodeDiffFiller = { fg = p.border },
+  CodeDiffGutterInsertNumber = { fg = p.green },
+  CodeDiffGutterDeleteNumber = { fg = p.red },
+  CodeDiffMoveFrom = { fg = p.blue },
+  CodeDiffMoveTo = { fg = p.blue },
+  CodeDiffExplorerTreeGroup = { fg = p.comet, bold = true },
+  CodeDiffExplorerStatFiles = { fg = p.muted },
+  CodeDiffExplorerStatInsertions = { fg = p.green },
+  CodeDiffExplorerStatDeletions = { fg = p.red },
+  CodeDiffExplorerStatBinary = { fg = p.gold },
+  CodeDiffStatusAdded = { fg = p.green },
+  CodeDiffStatusModified = { fg = p.blue },
+  CodeDiffStatusDeleted = { fg = p.red },
+  CodeDiffStatusRenamed = { fg = p.violet },
+  CodeDiffStatusUntracked = { fg = p.comet },
+  CodeDiffStatusConflict = { fg = p.red, bold = true },
+  CodeDiffConflictSign = { fg = p.gold },
+  CodeDiffConflictSignResolved = { fg = p.muted },
+  CodeDiffConflictSignAccepted = { fg = p.green },
+  CodeDiffConflictSignRejected = { fg = p.red },
+  CodeDiffHistoryTitle = { fg = p.violet, bold = true },
 
   -- Diagnostics
   DiagnosticError = { fg = p.red },
@@ -157,20 +182,20 @@ local groups = {
   -- Completion and pickers
   ComplHint = { fg = p.dim, italic = true },
   ComplHintMore = { fg = p.comet, bold = true },
-  BlinkCmpMenu = { fg = p.dim, bg = p.surface },
-  BlinkCmpMenuBorder = { fg = p.border, bg = p.surface },
+  BlinkCmpMenu = { fg = p.dim, bg = surface_bg },
+  BlinkCmpMenuBorder = { fg = p.border, bg = surface_bg },
   BlinkCmpMenuSelection = { fg = p.starlight, bg = p.surface_high, bold = true },
   BlinkCmpLabel = { fg = p.dim },
   BlinkCmpLabelMatch = { fg = p.comet, bold = true },
   BlinkCmpLabelDeprecated = { fg = p.muted, strikethrough = true },
   BlinkCmpKind = { fg = p.violet },
   BlinkCmpSource = { fg = p.muted, italic = true },
-  BlinkCmpDoc = { fg = p.dim, bg = p.surface },
-  BlinkCmpDocBorder = { fg = p.border, bg = p.surface },
-  TelescopeNormal = { fg = p.dim, bg = p.surface },
-  TelescopeBorder = { fg = p.border, bg = p.surface },
-  TelescopePromptNormal = { fg = p.fg, bg = p.surface_high },
-  TelescopePromptBorder = { fg = p.violet, bg = p.surface_high },
+  BlinkCmpDoc = { fg = p.dim, bg = surface_bg },
+  BlinkCmpDocBorder = { fg = p.border, bg = surface_bg },
+  TelescopeNormal = { fg = p.dim, bg = surface_bg },
+  TelescopeBorder = { fg = p.border, bg = surface_bg },
+  TelescopePromptNormal = { fg = p.fg, bg = surface_high_bg },
+  TelescopePromptBorder = { fg = p.violet, bg = surface_high_bg },
   TelescopePromptTitle = { fg = p.void, bg = p.violet, bold = true },
   TelescopePreviewTitle = { fg = p.void, bg = p.blue, bold = true },
   TelescopeResultsTitle = { fg = p.void, bg = p.comet, bold = true },
@@ -192,7 +217,7 @@ local groups = {
   WhichKeyGroup = { fg = p.violet },
   WhichKeyDesc = { fg = p.dim },
   WhichKeySeparator = { fg = p.border },
-  WhichKeyBorder = { fg = p.border, bg = p.surface },
+  WhichKeyBorder = { fg = p.border, bg = surface_bg },
   LazyButton = { fg = p.dim, bg = p.surface_high },
   LazyButtonActive = { fg = p.void, bg = p.comet, bold = true },
   LazyH1 = { fg = p.void, bg = p.violet, bold = true },
