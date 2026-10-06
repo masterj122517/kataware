@@ -1,6 +1,45 @@
 # Kataware
 
-A comet-lit indigo night for Neovim, Yazi, and Ghostty.
+A comet-lit indigo night for Vim, Neovim, Yazi, and Ghostty.
+
+## Vim
+
+Copy the Vimscript colorscheme into your Vim configuration:
+
+```sh
+mkdir -p ~/.vim/colors
+cp colors/kataware.vim ~/.vim/colors/kataware.vim
+```
+
+Add this to your `~/.vimrc`:
+
+```vim
+syntax enable
+if exists('+termguicolors')
+  set termguicolors
+endif
+colorscheme kataware
+```
+
+The theme supports GUI/true-color rendering and a 256-color terminal fallback. For a terminal without true-color support, omit `set termguicolors` and use a terminal configured for 256 colors.
+
+Kataware is opaque by default. To enable transparency, set the option before loading the colorscheme:
+
+```vim
+let g:kataware_transparent = 1
+colorscheme kataware
+```
+
+To toggle transparency at runtime:
+
+```vim
+let g:kataware_transparent = !get(g:, 'kataware_transparent', 0)
+colorscheme kataware
+```
+
+Transparent mode clears the editor canvas, sign and fold columns, completion menu, popup notifications, terminal background, and tabline fill. Selected rows, searches, diffs, and statuslines keep their backgrounds for readability. The palette also applies to Vim's built-in terminal buffers.
+
+When installed as a plugin in Neovim, the Vimscript entrypoint delegates to `colors/kataware.lua`, preserving the existing Treesitter, LSP, and plugin highlights. Neovim-only manual installations can continue to use just the Lua file.
 
 ## Neovim
 
@@ -79,3 +118,14 @@ Ghostty controls terminal transparency separately from color themes:
 background-opacity = 0.8
 background-blur = 32
 ```
+
+## Checks
+
+From the repository root:
+
+```sh
+vim -Nu NONE -n -i NONE -e -V1 -S tests/vim.vim
+nvim --headless -u NONE -l tests/transparent.lua
+```
+
+These checks cover transparent backgrounds, retained contrast on selected rows and statuslines, and restoring opaque backgrounds after reloading the colorscheme.
