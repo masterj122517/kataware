@@ -21,5 +21,6 @@ background = #0B1020
 foreground = #D9E2F2
 cursor-color = #9B8CFF
 cursor-text = #0B1020
+# Native text selection; tmux copy-mode uses the same colors.
 selection-background = #2B3B62
 selection-foreground = #EEF3FF

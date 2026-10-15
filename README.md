@@ -1,6 +1,6 @@
 # Kataware
 
-A comet-lit indigo night for Vim, Neovim, Yazi, and Ghostty.
+A comet-lit indigo night for Vim, Neovim, Yazi, Ghostty, and tmux.
 
 ## Vim
 
@@ -112,12 +112,57 @@ cp ghostty/Kataware ~/.config/ghostty/themes/Kataware
 theme = Kataware
 ```
 
+Native text selection uses a `#2B3B62` indigo background and `#EEF3FF` starlight foreground. The tmux theme below uses the same colors for copy-mode selection.
+
 Ghostty controls terminal transparency separately from color themes:
 
 ```ini
 background-opacity = 0.8
 background-blur = 32
 ```
+
+## tmux
+
+Copy the theme:
+
+```sh
+mkdir -p ~/.config/tmux
+cp tmux/kataware.conf ~/.config/tmux/kataware.conf
+```
+
+Add this to your tmux configuration (`~/.tmux.conf` or `~/.config/tmux/tmux.conf`), **after** other themes and plugin initialization:
+
+```tmux
+source-file ~/.config/tmux/kataware.conf
+```
+
+Apply it to a running tmux server:
+
+```sh
+tmux source-file ~/.config/tmux/kataware.conf
+```
+
+| Surface | Foreground | Background |
+| --- | --- | --- |
+| Copy-mode selection | Starlight `#EEF3FF` | Indigo `#2B3B62` |
+| Current window | Night `#0B1020` (bold) | Comet `#60D7E8` |
+| Other windows | Dim `#A8B7D0` | Surface `#151F38` |
+| Active pane border | Comet `#60D7E8` | Terminal default |
+| Other pane borders | Indigo `#2B3B62` | Terminal default |
+
+The theme changes styles only: mouse handling, key bindings, statusline content, and pane backgrounds remain unchanged. Pane borders respect terminal transparency; selection and the current window retain contrasting backgrounds.
+
+### Ghostty selection vs. tmux selection
+
+Ghostty's native selection and tmux copy-mode selection are separate. With tmux mouse capture enabled, normal dragging is handled by tmux and uses `mode-style`; it does not use Ghostty's `selection-background`.
+
+Use Shift-drag for Ghostty's native selection. If an application also captures Shift, set this in your Ghostty configuration to reserve Shift-drag for native selection:
+
+```ini
+mouse-shift-capture = never
+```
+
+See Ghostty's [mouse-shift-capture reference](https://ghostty.org/docs/config/reference#mouse-shift-capture). This mouse preference is intentionally not part of the color theme.
 
 ## Checks
 
@@ -126,6 +171,9 @@ From the repository root:
 ```sh
 vim -Nu NONE -n -i NONE -e -V1 -S tests/vim.vim
 nvim --headless -u NONE -l tests/transparent.lua
+ghostty +validate-config --config-file=ghostty/Kataware
 ```
 
 These checks cover transparent backgrounds, retained contrast on selected rows and statuslines, and restoring opaque backgrounds after reloading the colorscheme.
+
+The Ghostty command validates the theme configuration with your installed Ghostty version.
