@@ -1,6 +1,6 @@
 # Kataware
 
-A comet-lit indigo night for Vim, Neovim, Yazi, Ghostty, and tmux.
+A comet-lit indigo night for Vim, Neovim, Sublime Text, Yazi, Ghostty, and tmux.
 
 ## Vim
 
@@ -87,6 +87,76 @@ vim.cmd.colorscheme 'kataware'
 Transparent mode clears the editor canvas, generic floating windows, Telescope, completion menus, WhichKey, sign and fold columns, window bars, and tabline fill. Selected rows, semantic highlights, diagnostics, and statuslines keep their backgrounds for contrast and readability.
 
 For a manual installation, copy `colors/kataware.lua` to `~/.config/nvim/colors/kataware.lua`.
+
+## Sublime Text
+
+Requires Sublime Text 4. The `sublime/` directory contains a complete UI theme, a syntax color scheme, and command-palette entries. No Python plugin, third-party theme, or extra icon package is required.
+
+### Install
+
+Open **Preferences → Browse Packages…** and copy the contents of `sublime/` into a directory named **Kataware** inside that Packages directory. Keep the name `Kataware`: the customization commands use it to locate the base files.
+
+On macOS, from this repository:
+
+```sh
+packages="$HOME/Library/Application Support/Sublime Text/Packages"
+mkdir -p "$packages/Kataware"
+cp sublime/Kataware.sublime-* "$packages/Kataware/"
+```
+
+The usual Packages locations are:
+
+| Platform | Directory |
+| --- | --- |
+| macOS | `~/Library/Application Support/Sublime Text/Packages` |
+| Linux | `~/.config/sublime-text/Packages` |
+| Windows | `%APPDATA%\Sublime Text\Packages` |
+
+In the Command Palette, run both **Kataware: Apply UI Theme** and **Kataware: Apply Color Scheme**. Alternatively, merge these two entries into your user preferences:
+
+```json
+{
+    "theme": "Kataware.sublime-theme",
+    "color_scheme": "Kataware.sublime-color-scheme"
+}
+```
+
+The UI theme and syntax scheme are separate Sublime resources; selecting only one does not activate the other. Syntax-specific or project-specific `color_scheme` settings can override the global choice.
+
+### Coverage
+
+| Layer | Coverage |
+| --- | --- |
+| Editor | Canvas, selections, inactive selections, carets, current line, line numbers, whitespace, rulers, indentation guides, bracket/tag matching, folding, minimap, search and diff markers |
+| UI | Sidebar and file icons, Git status badges, tabs and dirty/preview states, status bar, command/Goto/quick panels, completion rows and kind labels, find/replace, inputs, buttons, scrollbars, progress and tooltips |
+| Syntax | Semantic fallback scopes for bundled languages; web/JSX/TSX, C/C++, Rust, Go, Python, Lua, shell, SQL, JSON/YAML/TOML, regex, Markdown/rST/LaTeX, Git/diff and build/find output; targeted Odin and Zig coverage |
+| Plugins | LSP semantic tokens, diagnostics, references, signature help, code actions/lenses; SublimeLinter, GitGutter, BracketHighlighter and FileBrowser scopes |
+| Documentation | minihtml popup, phantom and HTML-sheet colors, including headings, links and inline code |
+
+Functions use blue, types cyan, keywords violet, strings green, constants gold, and special forms pink. Comments use the Neovim theme's muted blue-gray. Search and selection retain quiet indigo surfaces.
+
+The UI theme extends Sublime's built-in `Default.sublime-theme` and replaces its palette and focused states. This preserves native controls, cross-platform/HiDPI textures, file-icon integrations, and user options such as tab style, sidebar fonts, bold folder labels, overlay scrollbars and minimap visibility. It does not enable editor features or change fonts, key bindings, opacity, or plugin settings.
+
+Coverage follows scopes supplied by each syntax or plugin; a theme cannot infer missing semantic tokens. LSP semantic highlighting must be enabled in LSP itself. Its [inlay hints use package-owned CSS](https://lsp.sublimetext.io/features/#inlay-hints), and plugins may impose their own minihtml styles. Native OS menus and file pickers remain system-controlled; title-bar styling depends on the platform. This package does not provide editor-window transparency.
+
+### Customize
+
+Use **Kataware: Customize UI Theme** or **Kataware: Customize Color Scheme** to open the base file beside your user override. Save changes in the **User** file, not the installed base. Sublime merges same-named resources, so your overrides survive package updates.
+
+For example, to brighten comments without changing line numbers, add this to `Packages/User/Kataware.sublime-color-scheme`:
+
+```json
+{
+    "rules": [
+        {
+            "scope": "comment, punctuation.definition.comment, meta.semantic-token.comment",
+            "foreground": "#A8B7D0"
+        }
+    ]
+}
+```
+
+See Sublime's [color-scheme reference](https://www.sublimetext.com/docs/color_schemes.html) and [theme reference](https://www.sublimetext.com/docs/themes.html) for other supported overrides.
 
 ## Yazi
 

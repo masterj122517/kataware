@@ -1,0 +1,28 @@
+[
+    {
+        "caption": "Kataware: Apply UI Theme",
+        "command": "select_theme",
+        "args": {"name": "Kataware.sublime-theme"}
+    },
+    {
+        "caption": "Kataware: Apply Color Scheme",
+        "command": "select_color_scheme",
+        "args": {"name": "Kataware.sublime-color-scheme"}
+    },
+    {
+        "caption": "Kataware: Customize UI Theme",
+        "command": "edit_settings",
+        "args": {
+            "base_file": "${packages}/Kataware/Kataware.sublime-theme",
+            "default": "{\n    \"variables\": {},\n    \"rules\": []\n}\n"
+        }
+    },
+    {
+        "caption": "Kataware: Customize Color Scheme",
+        "command": "edit_settings",
+        "args": {
+            "base_file": "${packages}/Kataware/Kataware.sublime-color-scheme",
+            "default": "{\n    \"variables\": {},\n    \"globals\": {},\n    \"rules\": []\n}\n"
+        }
+    }
+]

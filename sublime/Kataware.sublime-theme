@@ -1,0 +1,413 @@
+{
+	"extends": "Default.sublime-theme",
+	"variables":
+	{
+		"base_hue": "#10172A",
+		"base_tint": "#D9E2F2",
+		"ui_bg": "#10172A",
+		"text_fg": "#D9E2F2",
+		"link_fg": "#60D7E8",
+		"label_color": "#D9E2F2",
+		"icon_tint": "#A8B7D0",
+		"shape_tint": "#A8B7D0",
+
+		"button_bg": "#1D2A49",
+		"button_label_color": "#EEF3FF",
+		"button_label_shadow": "transparent",
+		"icon_button_highlight": "#253A68",
+
+		"scroll_bar_bg": "#2B3B62",
+		"scroll_bar_puck_bg": "#6B7FA2",
+		"scroll_bar_dark_bg": "#2B3B62",
+		"scroll_bar_puck_dark_bg": "#6B7FA2",
+
+		"sidebar_bg": "#10172A",
+		"sidebar_row_selected": "#253A68",
+		"sidebar_heading": "#A8B7D0",
+		"sidebar_heading_shadow": "transparent",
+		"sidebar_label": "#D9E2F2",
+		"sidebar_label_selected": "#EEF3FF",
+		"sidebar_label_ignored": "#6B7FA2",
+		"sidebar_button_tint": "#A8B7D0",
+		"sidebar_button_new_tint": "#82D2B2",
+		"sidebar_button_modified_tint": "#F2C38B",
+		"sidebar_button_deleted_tint": "#F2778B",
+		"sidebar_scroll_bar_bg": "#151F38",
+		"sidebar_scroll_bar_puck_bg": "#6B7FA2",
+
+		"vcs_untracked": "#6B7FA2",
+		"vcs_modified": "#F2C38B",
+		"vcs_missing": "#F2778B",
+		"vcs_staged": "#6CA8FF",
+		"vcs_added": "#82D2B2",
+		"vcs_deleted": "#F2778B",
+		"vcs_unmerged": "#F08BC3",
+
+		"switch_project_bg": "#10172A",
+		"panel_bg": "#151F38",
+		"dialog_bg": "#151F38",
+		"dialog_button_bg": "#253A68",
+		"progress_bar_bg": "#2B3B62",
+		"progress_bar_fg": "#60D7E8",
+		"tool_tip_bg": "#1D2A49",
+		"tool_tip_fg": "#EEF3FF",
+
+		"tabset_dark_tint_mod": "#10172A",
+		"tabset_dark_bg": "#10172A",
+		"tabset_medium_dark_tint_mod": "#10172A",
+		"tabset_medium_dark_bg": "#10172A",
+		"tabset_medium_tint_mod": "#10172A",
+		"tabset_medium_bg": "#10172A",
+		"tabset_light_tint_mod": "#10172A",
+		"tabset_light_bg": "#10172A",
+		"file_tab_angled_unselected_dark_tint": "#151F38",
+		"file_tab_angled_unselected_medium_dark_tint": "#151F38",
+		"file_tab_angled_unselected_medium_tint": "#151F38",
+		"file_tab_angled_unselected_light_tint": "#151F38",
+		"file_tab_selected_dark_tint": "#151F38",
+		"file_tab_selected_medium_dark_tint": "#151F38",
+		"file_tab_selected_medium_tint": "#151F38",
+		"file_tab_selected_light_tint": "#151F38",
+		"file_tab_angled_unselected_label_color": "#A8B7D0",
+		"file_tab_angled_unselected_label_shadow": "transparent",
+		"file_tab_angled_unselected_medium_label_color": "#A8B7D0",
+		"file_tab_angled_unselected_medium_label_shadow": "transparent",
+		"file_tab_angled_unselected_light_label_color": "#A8B7D0",
+		"file_tab_angled_unselected_light_label_shadow": "transparent",
+		"file_tab_unselected_label_color": "#A8B7D0",
+		"file_tab_unselected_light_label_color": "#A8B7D0",
+		"file_tab_selected_label_color": "#EEF3FF",
+		"file_tab_selected_light_label_color": "#EEF3FF",
+		"file_tab_highlight_new_tint": "#82D2B2",
+		"file_tab_highlight_deleted_tint": "#F2778B",
+		"file_tab_close_dark_tint": "#A8B7D0",
+		"file_tab_close_dark_new_tint": "#82D2B2",
+		"file_tab_close_dark_modified_tint": "#F2C38B",
+		"file_tab_close_dark_deleted_tint": "#F2778B",
+		"file_tab_close_light_tint": "#A8B7D0",
+		"file_tab_close_light_new_tint": "#82D2B2",
+		"file_tab_close_light_modified_tint": "#F2C38B",
+		"file_tab_close_light_deleted_tint": "#F2778B",
+		"tabset_button_light_tint": "#A8B7D0",
+
+		"sheet_dark_modifier": "l(- 4%)",
+		"sheet_medium_dark_modifier": "l(- 4%)",
+		"sheet_medium_modifier": "l(- 4%)",
+		"sheet_light_modifier": "l(- 4%)",
+		"text_widget_dark_modifier": "l(- 4%)",
+		"text_widget_light_modifier": "l(- 4%)",
+
+		"overlay_bg": "#151F38",
+		"quick_panel_label_color": "#D9E2F2",
+		"quick_panel_path_label_color": "#A8B7D0",
+		"quick_panel_matched_label_color": "#60D7E8",
+		"quick_panel_matched_path_label_color": "#60D7E8",
+		"quick_panel_selected_row_bg": "#253A68",
+		"quick_panel_selected_label_color": "#EEF3FF",
+		"quick_panel_selected_path_label_color": "#D9E2F2",
+		"quick_panel_selected_matched_label_color": "#60D7E8",
+		"quick_panel_selected_matched_path_label_color": "#60D7E8",
+		"quick_panel_link_color": "#60D7E8",
+
+		"viewport_always_visible_color": "#60D7E84D",
+		"viewport_hide_show_color": "#60D7E866",
+		"auto_complete_bg_dark_tint": "#151F38",
+		"auto_complete_bg_light_tint": "#151F38",
+		"auto_complete_selected_row_dark_tint": "#253A68",
+		"auto_complete_selected_row_light_tint": "#253A68",
+		"auto_complete_text_dark_tint": "#D9E2F2",
+		"auto_complete_text_light_tint": "#D9E2F2",
+		"auto_complete_detail_pane_dark_tint": "#10172A",
+		"auto_complete_detail_pane_light_tint": "#10172A",
+		"auto_complete_detail_panel_mono_dark_bg": "#1D2A49",
+		"auto_complete_detail_panel_mono_light_bg": "#1D2A49",
+		"kind_function_color": "#6CA8FF",
+		"kind_keyword_color": "#9B8CFF",
+		"kind_markup_color": "#F2C38B",
+		"kind_namespace_color": "#60D7E8",
+		"kind_navigation_color": "#F2C38B",
+		"kind_snippet_color": "#82D2B2",
+		"kind_type_color": "#60D7E8",
+		"kind_variable_color": "#D9E2F2",
+		"kind_name_label_border_color": "#60D7E8",
+
+		"status_bar_bg": "#10172A",
+		"status_bar_label_color": "#A8B7D0",
+		"status_bar_icon_tint": "#A8B7D0",
+		"status_bar_label_shadow": "transparent",
+		"radio_back": "#10172A",
+		"radio_border-unselected": "#6B7FA2",
+		"radio_selected": "#60D7E8",
+		"radio_border-selected": "#60D7E8",
+		"checkbox_back": "#10172A",
+		"checkbox_border-unselected": "#6B7FA2",
+		"checkbox_selected": "#60D7E8",
+		"checkbox_border-selected": "#60D7E8",
+		"checkbox-disabled": "#2B3B62"
+	},
+	"rules":
+	[
+		// Base chrome: retain the built-in raster geometry and its platform/HiDPI assets.
+		{
+			"class": "title_bar",
+			"style": "dark",
+			"fg": "#D9E2F2",
+			"bg": "#10172A"
+		},
+		{
+			"class": "sidebar_container",
+			"layer0.tint": "#10172A"
+		},
+		{
+			"class": "tree_row",
+			"attributes": ["selectable", "hover"],
+			"layer0.tint": "#1D2A49",
+			"layer0.opacity": 0.65
+		},
+		{
+			"class": "tree_row",
+			"attributes": ["selected"],
+			"layer0.tint": "#253A68",
+			"layer0.opacity": 1.0
+		},
+		{
+			"class": "tree_row",
+			"attributes": ["highlighted"],
+			"layer0.tint": "#253A68",
+			"layer0.opacity": 1.0
+		},
+		{
+			"class": "disclosure_button_control",
+			"layer0.tint": "#A8B7D0"
+		},
+		{
+			"class": "icon_folder",
+			"layer0.tint": "#F2C38B",
+			"layer0.opacity": 0.75
+		},
+		{
+			"class": "icon_folder_loading",
+			"layer0.tint": "#F2C38B",
+			"layer0.opacity": 0.75
+		},
+		{
+			"class": "icon_folder_dup",
+			"layer0.tint": "#F2C38B",
+			"layer0.opacity": 0.75
+		},
+		{
+			"class": "icon_file_type",
+			"layer0.tint": "#A8B7D0",
+			"layer0.opacity": 0.7
+		},
+
+		// File tabs honor the user-selected tab style while keeping chrome independent of file brightness.
+		{
+			"class": "tabset_control",
+			"settings": {"file_tab_style": ["", "rounded", "square"]},
+			"layer0.tint": "#10172A"
+		},
+		{
+			"class": "tab_control",
+			"settings": {"file_tab_style": ["", "rounded", "square"]},
+			"layer0.tint": "#10172A",
+			"layer1.tint": "#151F38"
+		},
+		{
+			"class": "tab_control",
+			"settings": {"file_tab_style": "angled"},
+			"layer1.tint": "#151F38",
+			"layer2.tint": "#60D7E8"
+		},
+		{
+			"class": "tab_control",
+			"attributes": ["selected"],
+			"layer1.tint": "#151F38",
+			"layer2.tint": "#60D7E8"
+		},
+		{
+			"class": "tab_control",
+			"attributes": ["!selected", "hover"],
+			"layer1.tint": "#1D2A49"
+		},
+		{
+			"class": "tab_label",
+			"parents": [{"class": "tab_control", "attributes": ["selected"]}],
+			"fg": "#EEF3FF"
+		},
+		{
+			"class": "tab_label",
+			"parents": [{"class": "tab_control", "attributes": ["!selected"]}],
+			"fg": "#A8B7D0"
+		},
+		{
+			"class": "tab_label",
+			"parents": [{"class": "tab_control", "attributes": ["!selected", "hover"]}],
+			"fg": "#D9E2F2"
+		},
+		{
+			"class": "tab_close_button",
+			"attributes": ["hover"],
+			"layer0.tint": "#60D7E8"
+		},
+
+		// Command palette, Goto, and quick panels.
+		{
+			"class": "overlay_control",
+			"layer0.tint": "#151F38"
+		},
+		{
+			"class": "quick_panel",
+			"layer0.tint": "#151F38"
+		},
+		{
+			"class": "mini_quick_panel_row",
+			"attributes": ["selected"],
+			"layer0.tint": "#253A68"
+		},
+		{
+			"class": "quick_panel_row",
+			"attributes": ["selected"],
+			"layer0.tint": "#253A68"
+		},
+		{
+			"class": "quick_panel_detail_label",
+			"fg": "#A8B7D0",
+			"link_color": "#60D7E8"
+		},
+		{
+			"class": "quick_panel_label hint",
+			"fg": "#A8B7D0",
+			"selected_fg": "#D9E2F2"
+		},
+
+		// Completion keeps the scheme's syntax foreground through fg_blend and adds a quiet focused row.
+		{
+			"class": "popup_control",
+			"layer0.tint": "#151F38"
+		},
+		{
+			"class": "auto_complete",
+			"tint_modifier": "#151F38"
+		},
+		{
+			"class": "table_row",
+			"attributes": ["selected"],
+			"layer0.tint": "#253A68"
+		},
+		{
+			"class": "auto_complete_label",
+			"match_fg": "#60D7E8",
+			"selected_match_fg": "#60D7E8"
+		},
+		{
+			"class": "auto_complete_detail_pane",
+			"tint_modifier": "#10172A"
+		},
+		{
+			"class": "auto_complete_kind_name_label",
+			"fg": "#A8B7D0",
+			"border_color": "#60D7E8"
+		},
+
+		// Find/replace, panels, dialogs, and text widgets.
+		{
+			"class": "panel_control",
+			"layer0.tint": "#151F38"
+		},
+		{
+			"class": "text_line_control",
+			"layer0.tint": "#10172A"
+		},
+		{
+			"class": "auto_complete_details",
+			"color": "#D9E2F2",
+			"link_color": "#60D7E8",
+			"monospace_color": "#EEF3FF"
+		},
+		{
+			"class": "button_control",
+			"layer0.tint": "#1D2A49"
+		},
+		{
+			"class": "button_control",
+			"attributes": ["hover"],
+			"layer0.tint": "#253A68"
+		},
+		{
+			"class": "button_control",
+			"attributes": ["pressed"],
+			"layer0.tint": "#2B3B62"
+		},
+		{
+			"class": "icon_button_control",
+			"attributes": ["selected"],
+			"layer0.tint": "#253A68"
+		},
+		{
+			"class": "dialog",
+			"layer0.tint": "#151F38"
+		},
+		{
+			"class": "progress_gauge_control",
+			"layer0.tint": "#60D7E8"
+		},
+		{
+			"class": "tool_tip_control",
+			"layer0.tint": "#1D2A49"
+		},
+
+		// View chrome.
+		{
+			"class": "grid_layout_control",
+			"border_color": "#0B1020"
+		},
+		{
+			"class": "minimap_control",
+			"viewport_color": "#60D7E84D"
+		},
+		{
+			"class": "fold_button_control",
+			"layer0.tint": "#60D7E8"
+		},
+		{
+			"class": "scroll_track_control",
+			"layer0.tint": "#2B3B62"
+		},
+		{
+			"class": "puck_control",
+			"layer0.tint": "#6B7FA2"
+		},
+		{
+			"class": "scroll_track_control",
+			"parents": [{"class": "sidebar_container"}],
+			"layer0.tint": "#151F38"
+		},
+		{
+			"class": "puck_control",
+			"parents": [{"class": "sidebar_container"}],
+			"layer0.tint": "#6B7FA2"
+		},
+
+		// Status bar stays quiet; the sidebar control gains cyan only when focused/hovered.
+		{
+			"class": "status_bar",
+			"layer0.tint": "#10172A"
+		},
+		{
+			"class": "sidebar_button_control",
+			"layer0.tint": "#A8B7D0"
+		},
+		{
+			"class": "sidebar_button_control",
+			"attributes": ["hover"],
+			"layer0.tint": "#60D7E8"
+		},
+		{
+			"class": "label_control",
+			"parents": [{"class": "status_bar"}],
+			"fg": "#A8B7D0",
+			"shadow_color": "transparent"
+		}
+	]
+}

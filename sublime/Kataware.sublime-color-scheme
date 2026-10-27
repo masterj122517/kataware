@@ -1,0 +1,534 @@
+{
+    "name": "Kataware",
+    "author": "Kataware",
+    "variables": {
+        "void": "#0B1020",
+        "night": "#10172A",
+        "surface": "#151F38",
+        "surface_high": "#1D2A49",
+        "border": "#2B3B62",
+        "muted": "#6B7FA2",
+        "dim": "#A8B7D0",
+        "fg": "#D9E2F2",
+        "starlight": "#EEF3FF",
+        "comet": "#60D7E8",
+        "blue": "#6CA8FF",
+        "violet": "#9B8CFF",
+        "pink": "#F08BC3",
+        "red": "#F2778B",
+        "gold": "#F2C38B",
+        "green": "#82D2B2",
+        "diff_add": "#142C31",
+        "diff_change": "#182846",
+        "diff_delete": "#2D192A",
+        "diff_text": "#253A68",
+        "diagnostic_error": "#241625",
+        "diagnostic_warn": "#28243A",
+        "diagnostic_info": "#172442",
+        "diagnostic_hint": "#14283A",
+        "redish": "#F2778B",
+        "orangish": "#F2C38B",
+        "yellowish": "#F2C38B",
+        "greenish": "#82D2B2",
+        "cyanish": "#60D7E8",
+        "bluish": "#6CA8FF",
+        "purplish": "#9B8CFF",
+        "pinkish": "#F08BC3"
+    },
+    "globals": {
+        "background": "var(void)",
+        "foreground": "var(fg)",
+        "invisibles": "var(border)",
+        "caret": "var(starlight)",
+        "block_caret": "var(starlight)",
+        "block_caret_border": "var(comet)",
+        "block_caret_underline": "var(comet)",
+        "block_caret_corner_style": "square",
+        "block_caret_corner_radius": "0",
+        "line_highlight": "var(night)",
+        "misspelling": "var(red)",
+        "fold_marker": "var(dim)",
+        "minimap_border": "var(border)",
+        "accent": "var(comet)",
+        "popup_css": "html { --background: #151F38; background-color: var(--background); color: var(--foreground); }\nbody { color: var(--foreground); background-color: var(--background); }\nh1, h2, h3, h4, h5, h6 { color: var(--cyanish); }\na { color: var(--bluish); text-decoration: underline; }\ncode, tt { color: var(--greenish); background-color: color(var(--bluish) alpha(0.12)); }\n.error { color: var(--redish); background-color: color(var(--redish) alpha(0.12)); }\n.warning { color: var(--yellowish); background-color: color(var(--yellowish) alpha(0.10)); }",
+        "phantom_css": "html { background-color: var(--background); color: var(--foreground); }\nbody { color: var(--foreground); background-color: var(--background); }\na { color: var(--bluish); text-decoration: underline; }\ncode, tt { color: var(--greenish); background-color: color(var(--bluish) alpha(0.12)); }",
+        "sheet_css": "html { background-color: var(--background); color: var(--foreground); }\nbody { color: var(--foreground); background-color: var(--background); }\nh1, h2, h3, h4, h5, h6 { color: var(--cyanish); }\na { color: var(--bluish); text-decoration: underline; }\ncode, tt { color: var(--greenish); background-color: color(var(--bluish) alpha(0.12)); }",
+        "gutter": "var(void)",
+        "gutter_foreground": "var(muted)",
+        "gutter_foreground_highlight": "var(gold)",
+        "line_diff_width": "2",
+        "line_diff_added": "var(green)",
+        "line_diff_modified": "var(blue)",
+        "line_diff_deleted": "var(red)",
+        "selection": "var(surface_high)",
+        "selection_foreground": "var(starlight)",
+        "selection_border": "var(border)",
+        "selection_border_width": "1",
+        "inactive_selection": "var(surface)",
+        "inactive_selection_foreground": "var(fg)",
+        "inactive_selection_border": "var(border)",
+        "selection_corner_style": "square",
+        "selection_corner_radius": "0",
+        "highlight": "var(border)",
+        "find_highlight": "var(diff_change)",
+        "find_highlight_foreground": "var(starlight)",
+        "find_area_highlight": "var(surface_high)",
+        "scroll_highlight": "var(blue)",
+        "scroll_selected_highlight": "var(comet)",
+        "rulers": "var(border)",
+        "guide": "color(var(border) alpha(0.55))",
+        "active_guide": "var(comet)",
+        "stack_guide": "color(var(comet) alpha(0.45))",
+        "brackets_options": "foreground underline",
+        "brackets_foreground": "var(comet)",
+        "bracket_contents_options": "underline",
+        "bracket_contents_foreground": "var(comet)",
+        "tags_options": "foreground underline",
+        "tags_foreground": "var(comet)",
+        "shadow": "color(var(void) alpha(0.72))",
+        "shadow_width": "4"
+    },
+    "rules": [
+        {
+            "name": "Comments",
+            "scope": "comment",
+            "foreground": "var(muted)",
+            "font_style": "italic"
+        },
+        {
+            "name": "Comment delimiters",
+            "scope": "punctuation.definition.comment",
+            "foreground": "var(muted)"
+        },
+        {
+            "name": "Variables",
+            "scope": "variable",
+            "foreground": "var(fg)"
+        },
+        {
+            "name": "Punctuation",
+            "scope": "punctuation - punctuation.definition.comment",
+            "foreground": "var(dim)"
+        },
+        {
+            "name": "Operators",
+            "scope": "keyword.operator, keyword.logic",
+            "foreground": "var(comet)"
+        },
+        {
+            "name": "Keywords",
+            "scope": "keyword - keyword.operator - keyword.logic, storage.type.function",
+            "foreground": "var(violet)"
+        },
+        {
+            "name": "Storage modifiers",
+            "scope": "storage.modifier",
+            "foreground": "var(violet)"
+        },
+        {
+            "name": "Types",
+            "scope": "storage.type, support.type, support.class, support.struct, entity.name.type, entity.name.class, entity.name.struct, entity.name.enum, entity.name.union, entity.name.interface, entity.name.trait, entity.other.inherited-class, variable.parameter.type",
+            "foreground": "var(comet)"
+        },
+        {
+            "name": "Definitions",
+            "scope": "entity.name",
+            "foreground": "var(comet)"
+        },
+        {
+            "name": "Functions",
+            "scope": "entity.name.function, variable.function",
+            "foreground": "var(blue)"
+        },
+        {
+            "name": "Built-in functions and macros",
+            "scope": "support.function, support.macro, variable.macro, entity.name.macro",
+            "foreground": "var(pink)"
+        },
+        {
+            "name": "Built-in variables and constants",
+            "scope": "variable.language, constant.builtin, constant.other.builtin",
+            "foreground": "var(pink)"
+        },
+        {
+            "name": "Constants",
+            "scope": "constant, support.constant, entity.name.constant, variable.other.constant",
+            "foreground": "var(gold)"
+        },
+        {
+            "name": "Boolean and null constants",
+            "scope": "constant.language.boolean, constant.language.null, constant.language.nil, constant.language.odin, constant.language.zig",
+            "foreground": "var(gold)",
+            "font_style": "bold"
+        },
+        {
+            "name": "Strings",
+            "scope": "string",
+            "foreground": "var(green)"
+        },
+        {
+            "name": "Escapes and placeholders",
+            "scope": "constant.character.escape, constant.other.placeholder",
+            "foreground": "var(gold)"
+        },
+        {
+            "name": "Regular expressions",
+            "scope": "string.regexp",
+            "foreground": "var(green)"
+        },
+        {
+            "name": "Regular expression operators",
+            "scope": "string.regexp punctuation, string.regexp keyword.operator",
+            "foreground": "var(pink)"
+        },
+        {
+            "name": "Preprocessor and annotations",
+            "scope": "keyword.directive, keyword.control.directive, keyword.tag, variable.annotation, entity.name.function.decorator, entity.name.function.preprocessor, punctuation.definition.annotation",
+            "foreground": "var(pink)"
+        },
+        {
+            "name": "Tags",
+            "scope": "entity.name.tag",
+            "foreground": "var(blue)"
+        },
+        {
+            "name": "Attributes",
+            "scope": "entity.other.attribute-name",
+            "foreground": "var(fg)"
+        },
+        {
+            "name": "Invalid",
+            "scope": "invalid.illegal",
+            "foreground": "var(starlight)",
+            "background": "var(red)"
+        },
+        {
+            "name": "Deprecated",
+            "scope": "invalid.deprecated",
+            "foreground": "var(void)",
+            "background": "var(gold)"
+        },
+        {
+            "name": "Todo and fixme",
+            "scope": "comment keyword.other, comment keyword.todo, comment keyword.fixme",
+            "foreground": "var(void)",
+            "background": "var(gold)",
+            "font_style": "bold"
+        },
+        {
+            "name": "JSON and YAML mapping keys",
+            "scope": "meta.mapping.key string, entity.name.tag.yaml",
+            "foreground": "var(blue)"
+        },
+        {
+            "name": "Unquoted YAML values",
+            "scope": "source.yaml string.unquoted - meta.mapping.key",
+            "foreground": "var(fg)"
+        },
+        {
+            "name": "CSS selectors",
+            "scope": "entity.other.attribute-name.class.css, entity.other.attribute-name.id.css, entity.other.attribute-name.pseudo-class.css, entity.other.attribute-name.pseudo-element.css",
+            "foreground": "var(blue)"
+        },
+        {
+            "name": "CSS properties",
+            "scope": "support.type.property-name",
+            "foreground": "var(fg)"
+        },
+        {
+            "name": "Odin function calls",
+            "scope": "support.function.odin",
+            "foreground": "var(blue)"
+        },
+        {
+            "name": "Markup headings",
+            "scope": "markup.heading, entity.name.section",
+            "foreground": "var(violet)",
+            "font_style": "bold"
+        },
+        {
+            "name": "Markup heading punctuation",
+            "scope": "markup.heading punctuation.definition.heading, punctuation.definition.heading",
+            "foreground": "var(blue)"
+        },
+        {
+            "name": "Markup links",
+            "scope": "string.other.link, markup.underline.link, markup.link",
+            "foreground": "var(blue)",
+            "font_style": "underline"
+        },
+        {
+            "name": "Markup bold",
+            "scope": "markup.bold",
+            "font_style": "bold"
+        },
+        {
+            "name": "Markup italic",
+            "scope": "markup.italic",
+            "font_style": "italic"
+        },
+        {
+            "name": "Markup underline",
+            "scope": "markup.underline",
+            "font_style": "underline"
+        },
+        {
+            "name": "Markup bold italic",
+            "scope": "markup.bold markup.italic, markup.italic markup.bold",
+            "font_style": "bold italic"
+        },
+        {
+            "name": "Markup code",
+            "scope": "markup.raw",
+            "foreground": "var(green)",
+            "background": "color(var(blue) alpha(0.12))"
+        },
+        {
+            "name": "Markup punctuation and list markers",
+            "scope": "markup.quote punctuation.definition.blockquote, markup.list punctuation.definition.list_item, markup.list.numbered.bullet, punctuation.definition.thematic-break",
+            "foreground": "var(gold)"
+        },
+        {
+            "name": "Diff headers",
+            "scope": "meta.diff.header, meta.diff.range, meta.diff.header punctuation, meta.diff.range punctuation",
+            "foreground": "var(violet)"
+        },
+        {
+            "name": "Diff additions",
+            "scope": "markup.inserted, diff.inserted, punctuation.definition.inserted",
+            "foreground": "var(green)",
+            "background": "var(diff_add)"
+        },
+        {
+            "name": "Diff deletions",
+            "scope": "markup.deleted, diff.deleted, punctuation.definition.deleted",
+            "foreground": "var(red)",
+            "background": "var(diff_delete)"
+        },
+        {
+            "name": "Diff changes",
+            "scope": "markup.changed, diff.changed, punctuation.definition.changed",
+            "foreground": "var(blue)",
+            "background": "var(diff_change)"
+        },
+        {
+            "name": "Diff changed characters",
+            "scope": "diff.inserted.char, diff.deleted.char",
+            "foreground": "var(starlight)",
+            "background": "var(diff_text)",
+            "font_style": "bold"
+        },
+        {
+            "name": "Build and find errors",
+            "scope": "message.error",
+            "foreground": "var(red)",
+            "background": "var(diagnostic_error)"
+        },
+        {
+            "name": "Build and find warnings",
+            "scope": "message.warning",
+            "foreground": "var(gold)",
+            "background": "var(diagnostic_warn)"
+        },
+        {
+            "name": "Build and find information",
+            "scope": "message.info",
+            "foreground": "var(blue)",
+            "background": "var(diagnostic_info)"
+        },
+        {
+            "name": "Matched line numbers",
+            "scope": "constant.numeric.line-number.match",
+            "foreground": "var(gold)"
+        },
+        {
+            "name": "Semantic token activation",
+            "scope": "meta.semantic-token",
+            "background": "#0B102001"
+        },
+        {
+            "name": "Semantic types",
+            "scope": "meta.semantic-token.namespace, meta.semantic-token.type, meta.semantic-token.class, meta.semantic-token.enum, meta.semantic-token.interface, meta.semantic-token.struct, meta.semantic-token.typeparameter",
+            "foreground": "var(comet)"
+        },
+        {
+            "name": "Semantic functions",
+            "scope": "meta.semantic-token.function, meta.semantic-token.method, meta.semantic-token.event",
+            "foreground": "var(blue)"
+        },
+        {
+            "name": "Semantic values",
+            "scope": "meta.semantic-token.parameter, meta.semantic-token.variable, meta.semantic-token.property",
+            "foreground": "var(fg)"
+        },
+        {
+            "name": "Semantic constants",
+            "scope": "meta.semantic-token.enummember, meta.semantic-token.number, meta.semantic-token.variable.readonly, meta.semantic-token.property.readonly",
+            "foreground": "var(gold)"
+        },
+        {
+            "name": "Semantic keywords",
+            "scope": "meta.semantic-token.keyword, meta.semantic-token.modifier",
+            "foreground": "var(violet)"
+        },
+        {
+            "name": "Semantic special forms",
+            "scope": "meta.semantic-token.macro, meta.semantic-token.decorator, meta.semantic-token.label, meta.semantic-token.function.defaultlibrary, meta.semantic-token.method.defaultlibrary, meta.semantic-token.variable.defaultlibrary",
+            "foreground": "var(pink)"
+        },
+        {
+            "name": "Semantic strings",
+            "scope": "meta.semantic-token.string, meta.semantic-token.regexp",
+            "foreground": "var(green)"
+        },
+        {
+            "name": "Semantic operators",
+            "scope": "meta.semantic-token.operator",
+            "foreground": "var(comet)"
+        },
+        {
+            "name": "Semantic comments",
+            "scope": "meta.semantic-token.comment",
+            "foreground": "var(muted)",
+            "font_style": "italic"
+        },
+        {
+            "name": "LSP signature help",
+            "scope": "variable.parameter.sighelp.active",
+            "foreground": "var(comet)",
+            "font_style": "bold"
+        },
+        {
+            "name": "LSP references and hover",
+            "scope": "markup.highlight.text, markup.highlight.read, markup.highlight.hover",
+            "background": "var(surface_high)"
+        },
+        {
+            "name": "LSP write references",
+            "scope": "markup.highlight.write",
+            "background": "var(diff_text)",
+            "font_style": "underline"
+        },
+        {
+            "name": "LSP diagnostic errors",
+            "scope": "markup.error",
+            "foreground": "var(red)"
+        },
+        {
+            "name": "LSP diagnostic warnings",
+            "scope": "markup.warning",
+            "foreground": "var(gold)"
+        },
+        {
+            "name": "LSP diagnostic information",
+            "scope": "markup.info",
+            "foreground": "var(blue)"
+        },
+        {
+            "name": "LSP diagnostic hints",
+            "scope": "markup.info.hint",
+            "foreground": "var(comet)"
+        },
+        {
+            "name": "LSP unused code",
+            "scope": "markup.unnecessary",
+            "foreground": "var(muted)"
+        },
+        {
+            "name": "LSP deprecated code",
+            "scope": "markup.deprecated",
+            "foreground": "var(muted)",
+            "font_style": "stippled_underline"
+        },
+        {
+            "name": "LSP code actions",
+            "scope": "markup.accent.codeaction",
+            "foreground": "var(comet)"
+        },
+        {
+            "name": "LSP code lenses",
+            "scope": "markup.accent.codelens",
+            "foreground": "var(green)"
+        },
+        {
+            "name": "Region red",
+            "scope": "region.redish",
+            "foreground": "var(red)"
+        },
+        {
+            "name": "Region orange",
+            "scope": "region.orangish",
+            "foreground": "var(gold)"
+        },
+        {
+            "name": "Region yellow",
+            "scope": "region.yellowish",
+            "foreground": "var(gold)"
+        },
+        {
+            "name": "Region green",
+            "scope": "region.greenish",
+            "foreground": "var(green)"
+        },
+        {
+            "name": "Region cyan",
+            "scope": "region.cyanish",
+            "foreground": "var(comet)"
+        },
+        {
+            "name": "Region blue",
+            "scope": "region.bluish",
+            "foreground": "var(blue)"
+        },
+        {
+            "name": "Region purple",
+            "scope": "region.purplish",
+            "foreground": "var(violet)"
+        },
+        {
+            "name": "Region pink",
+            "scope": "region.pinkish",
+            "foreground": "var(pink)"
+        },
+        {
+            "name": "BracketHighlighter default",
+            "scope": "brackethighlighter.default",
+            "foreground": "var(comet)"
+        },
+        {
+            "name": "BracketHighlighter unmatched",
+            "scope": "brackethighlighter.unmatched",
+            "foreground": "var(red)"
+        },
+        {
+            "name": "GitGutter ignored files",
+            "scope": "markup.ignored.git_gutter",
+            "foreground": "var(muted)"
+        },
+        {
+            "name": "GitGutter untracked files",
+            "scope": "markup.untracked.git_gutter",
+            "foreground": "var(comet)"
+        },
+        {
+            "name": "FileBrowser directories",
+            "scope": "string.name.directory.dired, string.name.directory.stats.dired, header.dired",
+            "foreground": "var(comet)"
+        },
+        {
+            "name": "FileBrowser file names",
+            "scope": "string.name.file.dired, string.name.file.extension.dired, string.name.file.stats.dired",
+            "foreground": "var(fg)"
+        },
+        {
+            "name": "FileBrowser symbols",
+            "scope": "punctuation.definition.directory.symbol.dired, punctuation.definition.directory.slash.dired, punctuation.definition.file.symbol.dired, punctuation.definition.rename_mode.dired, punctuation.definition.separator.dired",
+            "foreground": "var(dim)"
+        },
+        {
+            "name": "FileBrowser errors and filters",
+            "scope": "string.error.dired, keyword.control.filtered.dired",
+            "foreground": "var(red)"
+        }
+    ]
+}
