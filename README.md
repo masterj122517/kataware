@@ -2,91 +2,43 @@
 
 A comet-lit indigo night for Vim, Neovim, Sublime Text, Yazi, Ghostty, and tmux.
 
-## Vim
+## Palette balance
 
-Copy the Vimscript colorscheme into your Vim configuration:
+The themes share the palette of [kataware.nvim](https://github.com/masterj122517/kataware.nvim). The goal is one visual hierarchy, not an identical amount of color in every application:
 
-```sh
-mkdir -p ~/.vim/colors
-cp colors/kataware.vim ~/.vim/colors/kataware.vim
-```
+| Role | Color | Usage |
+| --- | --- | --- |
+| Canvas | `#0B1020` | Terminal and opaque editor backgrounds |
+| Text | `#D9E2F2` | Default foreground |
+| Quiet chrome | `#10172A` | tmux status row and inactive tabs |
+| Floating surface | `#151F38` | Editor floats and tmux messages |
+| Selection surface | `#1D2A49` | Neovim Visual, Ghostty selection, tmux copy mode and current tab |
+| Structural border | `#2B3B62` | Inactive pane edges |
+| Muted detail | `#6B7FA2` | Editor line numbers, inactive tmux labels and active pane edge |
+| Focus text | `#60D7E8` | Current tmux window label |
+| Cursor and selected text | `#EEF3FF` | Ghostty cursor and terminal selection foreground |
 
-Add this to your `~/.vimrc`:
+All 16 ANSI colors match Neovim's terminal palette. Syntax, diagnostics, shell output and terminal tools keep the existing indigo/spectral colors. Focus uses small accents on quiet surfaces instead of large cyan or violet blocks.
 
-```vim
-syntax enable
-if exists('+termguicolors')
-  set termguicolors
-endif
-colorscheme kataware
-```
+## Pairing with Vim and Neovim
 
-The theme supports GUI/true-color rendering and a 256-color terminal fallback. For a terminal without true-color support, omit `set termguicolors` and use a terminal configured for 256 colors.
+Vim and Neovim themes are installed separately; this repository no longer contains the `colors/` adapters. Use [kataware.nvim](https://github.com/masterj122517/kataware.nvim) for Neovim, including both its `colors/kataware.lua` entrypoint and `lua/kataware/` modules when installing manually.
 
-Kataware is opaque by default. To enable transparency, set the option before loading the colorscheme:
-
-```vim
-let g:kataware_transparent = 1
-colorscheme kataware
-```
-
-To toggle transparency at runtime:
-
-```vim
-let g:kataware_transparent = !get(g:, 'kataware_transparent', 0)
-colorscheme kataware
-```
-
-Transparent mode clears the editor canvas, sign and fold columns, completion menu, popup notifications, terminal background, and tabline fill. Selected rows, searches, diffs, and statuslines keep their backgrounds for readability. The palette also applies to Vim's built-in terminal buffers.
-
-When installed as a plugin in Neovim, the Vimscript entrypoint delegates to `colors/kataware.lua`, preserving the existing Treesitter, LSP, and plugin highlights. Neovim-only manual installations can continue to use just the Lua file.
-
-## Neovim
-
-Install with `lazy.nvim`:
+When using the matching editor theme:
 
 ```lua
-{
-  'masterj122517/kataware',
-  lazy = false,
-  priority = 1000,
-  config = function()
-    vim.cmd.colorscheme 'kataware'
-  end,
-}
-```
-
-Kataware is opaque by default. Enable transparency before loading the colorscheme:
-
-```lua
+-- Neovim: let the terminal canvas show through.
 vim.g.kataware_transparent = true
 vim.cmd.colorscheme 'kataware'
 ```
 
-With `lazy.nvim`:
-
-```lua
-{
-  'masterj122517/kataware',
-  lazy = false,
-  priority = 1000,
-  config = function()
-    vim.g.kataware_transparent = true
-    vim.cmd.colorscheme 'kataware'
-  end,
-}
+```vim
+" Vim: use your separately installed Kataware Vimscript theme.
+let g:kataware_transparent = 1
+colorscheme kataware
 ```
 
-To switch at runtime, update the option and reload the colorscheme:
-
-```lua
-vim.g.kataware_transparent = not vim.g.kataware_transparent
-vim.cmd.colorscheme 'kataware'
-```
-
-Transparent mode clears the editor canvas, generic floating windows, Telescope, completion menus, WhichKey, sign and fold columns, window bars, and tabline fill. Selected rows, semantic highlights, diagnostics, and statuslines keep their backgrounds for contrast and readability.
-
-For a manual installation, copy `colors/kataware.lua` to `~/.config/nvim/colors/kataware.lua`.
+Opaque editors use the shared canvas directly. Transparent editors inherit the terminal's composited background, so wallpaper and Ghostty opacity still affect perceived contrast. Opacity belongs to the terminal configuration and is not forced by this theme.
 
 ## Sublime Text
 
@@ -182,7 +134,7 @@ cp ghostty/Kataware ~/.config/ghostty/themes/Kataware
 theme = Kataware
 ```
 
-Native text selection uses a `#2B3B62` indigo background and `#EEF3FF` starlight foreground. The tmux theme below uses the same colors for copy-mode selection.
+Native text selection uses the same `#1D2A49` surface as Neovim's Visual highlight, with `#EEF3FF` selected text. The cursor is also `#EEF3FF`, matching Neovim's cursor. The tmux theme below shares the selection colors.
 
 Ghostty controls terminal transparency separately from color themes:
 
@@ -214,13 +166,13 @@ tmux source-file ~/.config/tmux/kataware.conf
 
 | Surface | Foreground | Background |
 | --- | --- | --- |
-| Copy-mode selection | Starlight `#EEF3FF` | Indigo `#2B3B62` |
-| Current window | Night `#0B1020` (bold) | Comet `#60D7E8` |
-| Other windows | Dim `#A8B7D0` | Surface `#151F38` |
-| Active pane border | Comet `#60D7E8` | Terminal default |
+| Copy-mode selection | Starlight `#EEF3FF` | Selection surface `#1D2A49` |
+| Current window | Comet `#60D7E8` (bold) | Selection surface `#1D2A49` |
+| Other windows | Muted `#6B7FA2` | Night `#10172A` |
+| Active pane border | Muted `#6B7FA2` | Terminal default |
 | Other pane borders | Indigo `#2B3B62` | Terminal default |
 
-The theme changes styles only: mouse handling, key bindings, statusline content, and pane backgrounds remain unchanged. Pane borders respect terminal transparency; selection and the current window retain contrasting backgrounds.
+The theme changes styles only: mouse handling, key bindings, statusline content, and pane backgrounds remain unchanged. Pane borders respect terminal transparency. The current window is distinguished by cyan text and a subtle background rather than an inverted cyan block.
 
 ### Ghostty selection vs. tmux selection
 
@@ -239,11 +191,16 @@ See Ghostty's [mouse-shift-capture reference](https://ghostty.org/docs/config/re
 From the repository root:
 
 ```sh
-vim -Nu NONE -n -i NONE -e -V1 -S tests/vim.vim
-nvim --headless -u NONE -l tests/transparent.lua
 ghostty +validate-config --config-file=ghostty/Kataware
+ghostty +show-config
 ```
 
-These checks cover transparent backgrounds, retained contrast on selected rows and statuslines, and restoring opaque backgrounds after reloading the colorscheme.
+`validate-config` checks the theme with your installed Ghostty version. After installing, `show-config` reports the effective configuration, including theme colors and independently configured opacity. Reload Ghostty's configuration to apply theme edits to existing windows.
 
-The Ghostty command validates the theme configuration with your installed Ghostty version.
+The tmux theme can be loaded in a running server with the `source-file` command above; inspect the effective styles with:
+
+```sh
+tmux show-options -g mode-style
+tmux show-options -g window-status-current-style
+tmux show-options -g pane-active-border-style
+```

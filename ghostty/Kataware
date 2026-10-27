@@ -19,8 +19,8 @@ palette = 15=#EEF3FF
 
 background = #0B1020
 foreground = #D9E2F2
-cursor-color = #9B8CFF
+cursor-color = #EEF3FF
 cursor-text = #0B1020
-# Native text selection; tmux copy-mode uses the same colors.
-selection-background = #2B3B62
+# Selection shares Neovim's Visual surface, not its structural border.
+selection-background = #1D2A49
 selection-foreground = #EEF3FF

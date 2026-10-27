@@ -4,17 +4,17 @@ overall = { bg = "#0B1020" }
 [mgr]
 cwd = { fg = "#60D7E8" }
 
-find_keyword  = { fg = "#F2C38B", italic = true }
-find_position = { fg = "#F08BC3", bg = "reset", italic = true }
+find_keyword  = { fg = "#D9E2F2", bg = "#1D2A49", italic = false }
+find_position = { fg = "#EEF3FF", bg = "#2B3B62", italic = false }
 
 marker_copied   = { fg = "#82D2B2", bg = "#82D2B2" }
 marker_cut      = { fg = "#F2778B", bg = "#F2778B" }
-marker_marked   = { fg = "#60D7E8", bg = "#60D7E8" }
-marker_selected = { fg = "#9B8CFF", bg = "#9B8CFF" }
+marker_marked   = { fg = "#1D2A49", bg = "#1D2A49" }
+marker_selected = { fg = "#2B3B62", bg = "#2B3B62" }
 
 count_copied   = { fg = "#0B1020", bg = "#82D2B2" }
 count_cut      = { fg = "#0B1020", bg = "#F2778B" }
-count_selected = { fg = "#0B1020", bg = "#9B8CFF" }
+count_selected = { fg = "#EEF3FF", bg = "#2B3B62" }
 
 border_symbol = "│"
 border_style  = { fg = "#6B7FA2" }
@@ -22,8 +22,8 @@ border_style  = { fg = "#6B7FA2" }
 syntect_theme = "~/.config/yazi/Kataware.tmTheme"
 
 [tabs]
-active   = { fg = "#0B1020", bg = "#D9E2F2", bold = true }
-inactive = { fg = "#D9E2F2", bg = "#1D2A49" }
+active   = { fg = "#EEF3FF", bg = "#2B3B62", bold = false }
+inactive = { fg = "#A8B7D0", bg = "#151F38" }
 
 [mode]
 normal_main = { fg = "#0B1020", bg = "#9B8CFF", bold = true }
@@ -36,9 +36,9 @@ unset_main  = { fg = "#0B1020", bg = "#F08BC3", bold = true }
 unset_alt   = { fg = "#F08BC3", bg = "#151F38"}
 
 [indicator]
-parent = { fg = "#0B1020", bg = "#D9E2F2" }
-current = { fg = "#0B1020", bg = "#9B8CFF" }
-preview = { fg = "#0B1020", bg = "#D9E2F2" }
+parent = { fg = "#D9E2F2", bg = "#1D2A49" }
+current = { fg = "#EEF3FF", bg = "#2B3B62" }
+preview = { fg = "#D9E2F2", bg = "#1D2A49" }
 
 [status]
 sep_left  = { open = "", close = "" }
@@ -58,7 +58,7 @@ perm_sep   = { fg = "#6B7FA2" }
 border   = { fg = "#9B8CFF" }
 title    = {}
 value    = {}
-selected = { reversed = true }
+selected = { fg = "#EEF3FF", bg = "#2B3B62", reversed = false }
 
 [pick]
 border   = { fg = "#9B8CFF" }
