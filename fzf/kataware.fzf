@@ -1,0 +1,8 @@
+--color=dark,fg:#D9E2F2,bg:-1,hl:#F2C38B
+--color=fg+:#EEF3FF,bg+:#1D2A49,hl+:#FFD49F
+--color=selected-fg:#EEF3FF,selected-bg:#151F38,selected-hl:#F2C38B
+--color=preview-fg:#D9E2F2,preview-bg:-1
+--color=input-fg:#D9E2F2,input-bg:-1,header-bg:-1,footer-bg:-1
+--color=border:#2B3B62,separator:#2B3B62,scrollbar:#2B3B62,preview-scrollbar:#2B3B62
+--color=label:#A8B7D0,info:#6B7FA2,header:#A8B7D0,footer:#A8B7D0
+--color=prompt:#60D7E8,pointer:#60D7E8,marker:#9B8CFF,spinner:#60D7E8

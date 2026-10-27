@@ -1,6 +1,6 @@
 # Kataware
 
-A comet-lit indigo night for Vim, Neovim, Sublime Text, Yazi, Ghostty, and tmux.
+A comet-lit indigo night for Vim, Neovim, Sublime Text, Yazi, Ghostty, tmux, ripgrep, and fzf.
 
 ## Palette balance
 
@@ -185,6 +185,38 @@ mouse-shift-capture = never
 ```
 
 See Ghostty's [mouse-shift-capture reference](https://ghostty.org/docs/config/reference#mouse-shift-capture). This mouse preference is intentionally not part of the color theme.
+
+## ripgrep
+
+`ripgrep/kataware.conf` contains colors only: blue paths, muted line/column numbers, and bold gold matches. It leaves search rules, output format, and automatic color detection unchanged. Piped output stays plain unless you request `--color=always`.
+
+For a new configuration:
+
+```sh
+mkdir -p ~/.config/ripgrep
+cp ripgrep/kataware.conf ~/.config/ripgrep/kataware.conf
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/kataware.conf"
+```
+
+Add the export to your shell startup file. If you already use a ripgrep configuration, keep `RIPGREP_CONFIG_PATH` pointing to it and replace its `--colors` entries with the contents of `ripgrep/kataware.conf`. ripgrep reads one configuration file; it does not source a separate theme file.
+
+## fzf
+
+`fzf/kataware.fzf` contains color options only. The canvas and preview inherit the terminal background, preserving transparency. The current row uses the shared `#1D2A49` selection surface; marked rows use `#151F38`. Cyan identifies the prompt and pointer, violet marks selections, and gold highlights matches. Borders and both list/preview scrollbars use structural indigo (`#2B3B62`), not foreground or line-number colors. The preview scrollbar is set explicitly so its color does not depend on preview-border inheritance.
+
+The left-hand list gutter (`▌`) follows the current-row background (`bg+`), as in [Catppuccin's fzf theme](https://github.com/catppuccin/fzf). Do not set `gutter:-1`: fzf also uses this role as the glyph's foreground, so `-1` produces a terminal-default foreground stripe rather than a transparent gutter.
+
+Install and add the export to your shell startup file:
+
+```sh
+mkdir -p ~/.config/fzf
+cp fzf/kataware.fzf ~/.config/fzf/kataware.fzf
+export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/kataware.fzf"
+```
+
+Keep key bindings, layout, preview commands, and other behavior in `FZF_DEFAULT_OPTS`. Remove old `--color` options from that variable: it overrides `FZF_DEFAULT_OPTS_FILE`, and command-line options override both. If you already use an options file, merge these color lines into it instead.
+
+The theme uses `FZF_DEFAULT_OPTS_FILE` and section/selection color roles; verified with fzf 0.74.4. Preview programs such as bat retain their own syntax colors. With `fzf --ansi`, colored ripgrep input also retains its source colors outside fzf's match highlights.
 
 ## Checks
 
